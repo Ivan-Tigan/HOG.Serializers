@@ -1,58 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <Import Project="..\packages\FSharp.Compiler.Tools.10.0.2\build\FSharp.Compiler.Tools.props" Condition="Exists('..\packages\FSharp.Compiler.Tools.10.0.2\build\FSharp.Compiler.Tools.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{ABD0A3B6-D31C-4FFE-B737-D32E24E58945}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <RootNamespace>HOG.Serializers</RootNamespace>
-        <AssemblyName>HOG.Serializers</AssemblyName>
-        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <WarnOn>3390;$(WarnOn)</WarnOn>
+        <TargetFrameworks>net472;net5.0;netstandard2.0</TargetFrameworks>
+        <PackageVersion>2.0.0</PackageVersion>
+        <Authors>vankata</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>portable</DebugType>
-        <Optimize>false</Optimize>
-        <Tailcalls>false</Tailcalls>
-        <OutputPath>bin\$(Configuration)\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <WarningLevel>3</WarningLevel>
-        <OtherFlags>--warnon:1182</OtherFlags>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <Tailcalls>true</Tailcalls>
-        <OutputPath>bin\$(Configuration)\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <WarningLevel>3</WarningLevel>
-        <OtherFlags>--warnon:1182</OtherFlags>
-    </PropertyGroup>
+
     <ItemGroup>
-        <Reference Include="FsPickler, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\packages\FsPickler.5.3.0\lib\net45\FsPickler.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="mscorlib" />
-        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Numerics" />
-        <Reference Include="FSharp.Core">
-            <HintPath>..\packages\FSharp.Core.4.5.2\lib\net45\FSharp.Core.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="AssemblyInfo.fs" />
         <Compile Include="Library.fs" />
-        <None Include="Script.fsx" />
-        <Content Include="packages.config" />
     </ItemGroup>
-    <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+
+    <ItemGroup>
+      <PackageReference Include="FsPickler" Version="5.3.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
 </Project>
